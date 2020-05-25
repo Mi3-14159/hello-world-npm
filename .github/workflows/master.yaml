@@ -20,12 +20,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Build
-        run: npm ci
-
-      - name: Test
-        run: npm test
-
       - name: Bump version
         run: |
           VERSION=$(npm version minor)
