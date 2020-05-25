@@ -1,7 +1,7 @@
 {
-  "name": "@codertocat/hello-world-npm",
+  "name": "@Mi3-14159/hello-world-npm",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
-  "homepage": "https://github.com/Codertocat/hello-world-npm#readme",
+  "homepage": "https://github.com/Mi3-14159/hello-world-npm#readme",
   "version": "2.10.0",
   "main": "index.js",
   "author": {
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codertocat/hello-world-npm.git"
+    "url": "git+https://github.com/Mi3-14159/hello-world-npm.git"
   },
   "bugs": {
-    "url": "https://github.com/Codertocat/hello-world-npm/issues"
+    "url": "https://github.com/Mi3-14159/hello-world-npm/issues"
   },
   "files": [
     "index.js"
