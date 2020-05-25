@@ -1,11 +1,10 @@
 name: Publish Package
 on:
   release:
-    types: [published]
+    types: [create]
 
 jobs:
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
