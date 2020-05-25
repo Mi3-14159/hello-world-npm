@@ -1,22 +1,27 @@
 {
   "name": "@codertocat/hello-world-npm",
-  "version": "1.0.2",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
+  "homepage": "https://github.com/Codertocat/hello-world-npm#readme",
+  "version": "1.1.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "Codertocat"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codertocat/hello-world-npm.git"
   },
-  "author": "Codertocat",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Codertocat/hello-world-npm/issues"
   },
-  "homepage": "https://github.com/Codertocat/hello-world-npm#readme",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
