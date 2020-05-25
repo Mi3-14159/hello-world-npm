@@ -12,8 +12,17 @@ jobs:
         fetch-depth: '0'
 
     - run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - run: |
         VERSION=$(npm version minor)
         echo "::set-env name=PACKAGE_VERSION::$VERSION"
+    
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.17.2
