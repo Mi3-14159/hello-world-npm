@@ -11,7 +11,8 @@ jobs:
       with:
         fetch-depth: '0'
 
-    - run: |
+    - name: Prepare git client
+      run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
