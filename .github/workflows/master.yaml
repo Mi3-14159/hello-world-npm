@@ -18,17 +18,18 @@ jobs:
     - run: |
         VERSION=$(npm version minor)
         echo "::set-env name=PACKAGE_VERSION::$VERSION"
+        git push
     
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Push changes
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.PACKAGE_VERSION }}
         release_name: Release ${{ env.PACKAGE_VERSION }}
