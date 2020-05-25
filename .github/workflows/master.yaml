@@ -10,8 +10,14 @@ jobs:
     - uses: actions/checkout@master
       with:
         fetch-depth: '0'
+
+    - run: |
+        VERSION=$(npm version minor)
+        echo "::set-env name=PACKAGE_VERSION::$VERSION"
+
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.17.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+        CUSTOM_TAG: env.PACKAGE_VERSION
