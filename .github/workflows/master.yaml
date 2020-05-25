@@ -16,7 +16,7 @@ jobs:
         git config --local user.name "GitHub Action"
 
     - name: Bump version
-    run: |
+      run: |
         VERSION=$(npm version minor)
         echo "::set-env name=PACKAGE_VERSION::$VERSION"
         git push
