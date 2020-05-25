@@ -24,9 +24,22 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.17.2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
-        CUSTOM_TAG: env.PACKAGE_VERSION
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: env.PACKAGE_VERSION
+        release_name: Release env.PACKAGE_VERSION
+        body: |
+          read code ;)
+        draft: false
+        prerelease: false
+
+    # - name: Bump version and push tag
+    #   uses: anothrNick/github-tag-action@1.17.2
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     WITH_V: true
+    #     CUSTOM_TAG: env.PACKAGE_VERSION
