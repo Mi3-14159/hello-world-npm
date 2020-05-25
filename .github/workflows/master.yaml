@@ -1,43 +1,51 @@
-name: Bump version
+name: Release new version
 on:
   push:
     branches:
       - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: '0'
+      - uses: actions/checkout@v2
 
-    - name: Prepare git client
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 13
+          registry-url: https://npm.pkg.github.com/
+      
+      - name: Prepare git client
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
-    - name: Bump version
-      run: |
-        VERSION=$(npm version minor)
-        echo "::set-env name=PACKAGE_VERSION::$VERSION"
-        git push
+      - name: Build
+        run: npm ci
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ env.PACKAGE_VERSION }}
-        release_name: Release ${{ env.PACKAGE_VERSION }}
-        body: |
-          read code ;)
-        draft: false
-        prerelease: false
+      - name: Test
+        run: npm test
 
-    # - name: Bump version and push tag
-    #   uses: anothrNick/github-tag-action@1.17.2
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     WITH_V: true
-    #     CUSTOM_TAG: env.PACKAGE_VERSION
+      - name: Bump version
+        run: |
+          VERSION=$(npm version minor)
+          echo "::set-env name=PACKAGE_VERSION::$VERSION"
+          git push
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.PACKAGE_VERSION }}
+          release_name: Release ${{ env.PACKAGE_VERSION }}
+          body: |
+            read code ;)
+          draft: false
+          prerelease: false
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
