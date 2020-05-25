@@ -15,15 +15,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-    - run: |
+    - name: Bump version
+    run: |
         VERSION=$(npm version minor)
         echo "::set-env name=PACKAGE_VERSION::$VERSION"
         git push
-    
-    # - name: Push changes
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release
       id: create_release
