@@ -1,3 +1,11 @@
+## 1.2.0 (2020-05-25)
+
+* Fix typo ([d6591a1](https://github.com/Codertocat/hello-world-npm/commit/d6591a1))
+* Release 1.1.0 ([9568208](https://github.com/Codertocat/hello-world-npm/commit/9568208))
+* Use scoped npm package ([0c011f2](https://github.com/Codertocat/hello-world-npm/commit/0c011f2))
+
+
+
 ## 1.1.0 (2020-05-25)
 
 * Fix typo ([d6591a1](https://github.com/Codertocat/hello-world-npm/commit/d6591a1))
