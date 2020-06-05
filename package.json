@@ -2,7 +2,7 @@
   "name": "@Mi3-14159/hello-world-npm",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
   "homepage": "https://github.com/Mi3-14159/hello-world-npm#readme",
-  "version": "2.13.0",
+  "version": "2.14.0",
   "main": "index.js",
   "author": {
     "name": "Codertocat"
